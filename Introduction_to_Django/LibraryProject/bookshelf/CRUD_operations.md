@@ -12,13 +12,16 @@ book = Book.objects.create(title="1984", author="George Orwell", publication_yea
 # <Book: 1984 by George Orwell (1949)>
 
 # Retrieve
-# Retrieve all books
-books = Book.objects.all()
-for b in books:
-    print(b.title, b.author, b.publication_year)
+# Retrieve Book
+
+```python
+# Retrieve the book with title "1984"
+book = Book.objects.get(title="1984")
+print(book.title, book.author, book.publication_year)
 
 # Output:
 # 1984 George Orwell 1949
+
 
 # Update
 # Update the title of the book

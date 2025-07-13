@@ -1,7 +1,8 @@
-# Retrieve all books
-books = Book.objects.all()
-for b in books:
-    print(b.title, b.author, b.publication_year)
+# Retrieve Book
+
+# Retrieve the book with title "1984"
+book = Book.objects.get(title="1984")
+print(book.title, book.author, book.publication_year)
 
 # Output:
 # 1984 George Orwell 1949
