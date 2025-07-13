@@ -14,7 +14,7 @@ book = Book.objects.create(title="1984", author="George Orwell", publication_yea
 # Retrieve
 # Retrieve Book
 
-```python
+
 # Retrieve the book with title "1984"
 book = Book.objects.get(title="1984")
 print(book.title, book.author, book.publication_year)
@@ -37,6 +37,11 @@ print(updated_book.title)
 # Nineteen Eighty-Four
 
 # Delete
+# Delete Book and Confirm Deletion
+
+
+from bookshelf.models import Book
+
 # Delete the book
 book = Book.objects.get(title="Nineteen Eighty-Four")
 book.delete()
