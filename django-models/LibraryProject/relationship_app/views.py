@@ -7,7 +7,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test, login_required
 
 def home(request):
     return HttpResponse("<h1>Welcome to the Library App</h1><p><a href='/books/'>View Books</a></p>")
@@ -48,3 +48,20 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return render(request, 'relationship_app/logout.html')
+
+def role_check(role):
+    def check(user):
+        return user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == role
+    return check
+
+@user_passes_test(role_check('Admin'))
+def admin_view(request):
+    return render(request, 'admin_view.html')
+
+@user_passes_test(role_check('Librarian'))
+def librarian_view(request):
+    return render(request, 'librarian_view.html')
+
+@user_passes_test(role_check('Member'))
+def member_view(request):
+    return render(request, 'member_view.html')
