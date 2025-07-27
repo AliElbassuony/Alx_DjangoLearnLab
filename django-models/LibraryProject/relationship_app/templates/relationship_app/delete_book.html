@@ -1,0 +1,6 @@
+<h2>Delete Book: {{ book.title }}</h2>
+<form method="post">
+  {% csrf_token %}
+  <p>Are you sure?</p>
+  <button type="submit">Yes, Delete</button>
+</form>
