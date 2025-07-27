@@ -54,14 +54,15 @@ def role_check(role):
         return user.is_authenticated and hasattr(user, 'userprofile') and user.userprofile.role == role
     return check
 
+
 @user_passes_test(role_check('Admin'))
 def admin_view(request):
-    return render(request, 'admin_view.html')
+    return render(request, 'relationship_app/admin_view.html')
 
 @user_passes_test(role_check('Librarian'))
 def librarian_view(request):
-    return render(request, 'librarian_view.html')
+    return render(request, 'relationship_app/librarian_view.html')
 
 @user_passes_test(role_check('Member'))
 def member_view(request):
-    return render(request, 'member_view.html')
+    return render(request, 'relationship_app/member_view.html')
