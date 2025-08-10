@@ -32,3 +32,10 @@ GET /api/books/?ordering=publication_year
 
 Order by year descending:
 GET /api/books/?ordering=-publication_year
+
+# API Unit Tests
+
+## Running Tests
+Run:
+```bash
+python manage.py test api
