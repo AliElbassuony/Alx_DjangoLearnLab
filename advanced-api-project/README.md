@@ -13,3 +13,22 @@
 - Public: Read operations
 - Authenticated: Write operations
 - Validation: Publication year cannot be in the future.
+
+
+## Filtering
+Filter by year:
+GET /api/books/?publication_year=1945
+
+Filter by author name:
+GET /api/books/?author__name=George%20Orwell
+
+## Searching
+Search for keyword in title or author:
+GET /api/books/?search=Farm
+
+## Ordering
+Order by year ascending:
+GET /api/books/?ordering=publication_year
+
+Order by year descending:
+GET /api/books/?ordering=-publication_year
