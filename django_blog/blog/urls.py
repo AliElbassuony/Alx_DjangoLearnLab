@@ -10,11 +10,18 @@ urlpatterns = [
     path("login/", views.login_view, name="login"),
     path("logout/", LogoutView.as_view(next_page="login"), name="logout"),
     path("profile/", views.profile_view, name="profile"),
-    path("", PostListView.as_view(), name="post-list"),
+
     path("posts/", PostListView.as_view(), name="post-list"),
-    path("posts/new/", PostCreateView.as_view(), name="post-create"),
-    path("posts/<int:pk>/", PostDetailView.as_view(), name="post-detail"),
+   
+    
     path("posts/<int:pk>/edit/", PostUpdateView.as_view(), name="post-edit"),
-    path("posts/<int:pk>/delete/", PostDeleteView.as_view(), name="post-delete"),
+
+
+    path('', views.PostListView.as_view(), name='blog-home'),
+    path('post/<int:pk>/', views.PostDetailView.as_view(), name='post-detail'),
+    path('post/new/', views.PostCreateView.as_view(), name='post-create'),
+    path('post/<int:pk>/update/', views.PostUpdateView.as_view(), name='post-update'),
+    path('post/<int:pk>/delete/', views.PostDeleteView.as_view(), name='post-delete'),
+    path('about/', views.about, name='blog-about'),
 ]
 
