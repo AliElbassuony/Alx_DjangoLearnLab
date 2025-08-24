@@ -23,9 +23,8 @@ def add_comment(request, post_id):
             comment.author = request.user
             comment.save()
             return redirect("post_detail", pk=post.id)
-    else:
-        form = CommentForm()
     return redirect("post_detail", pk=post.id)
+
 
 class CommentUpdateView(UpdateView):
     model = Comment
@@ -33,17 +32,19 @@ class CommentUpdateView(UpdateView):
     template_name = "blog/edit_comment.html"
 
     def get_queryset(self):
-        # Ensure only comment author can edit
+        # Only the author can edit
         return self.model.objects.filter(author=self.request.user)
 
     def get_success_url(self):
         return reverse_lazy("post_detail", kwargs={"pk": self.object.post.id})
+
 
 class CommentDeleteView(DeleteView):
     model = Comment
     template_name = "blog/delete_comment.html"
 
     def get_queryset(self):
+        # Only the author can delete
         return self.model.objects.filter(author=self.request.user)
 
     def get_success_url(self):
