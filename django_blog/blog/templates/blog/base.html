@@ -13,9 +13,14 @@
     <a href="{% url 'login' %}">Login</a>
     <a href="{% url 'register' %}">Register</a>
   {% endif %}
+  
 </nav>
 </head>
 <body>
+    <form method="get" action="{% url 'search_posts' %}">
+  <input type="text" name="q" placeholder="Search..." />
+  <button type="submit">Search</button>
+</form> 
     <h1>Welcome to Django Blog</h1>
     {% block content %}{% endblock %}
 </body>

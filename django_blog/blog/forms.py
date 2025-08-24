@@ -17,7 +17,7 @@ class PostForm(forms.ModelForm):
             "title": forms.TextInput(attrs={"placeholder": "Post title"}),
             "content": forms.Textarea(attrs={"rows": 8, "placeholder": "Write your post..."}),
         }
-
+        fields = ["title", "content", "tags"] 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(required=True)
 
