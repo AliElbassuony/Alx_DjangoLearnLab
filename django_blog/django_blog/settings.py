@@ -17,7 +17,9 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "post-list"
+LOGOUT_REDIRECT_URL = "login"
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "blog/static")]
 
